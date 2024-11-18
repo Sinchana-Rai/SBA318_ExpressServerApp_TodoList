@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo list</title>
+</head>
+<body>
+    <h1 class="heading">Todo List</h1>
+    
+        <% { todos.map((el, index) => { %>
+        
+            <h3><span> <%= index + 1 %>. </span> <%= el.task %>
+                <span>
+                    <button>Edit</button>
+                </span>
+                <span>
+                    <button>Delete</button>
+                </span>
+            </h3>
+        <%  })}  %>
+
+        </body>
+</html

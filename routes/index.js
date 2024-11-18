@@ -1,13 +1,18 @@
 const express = require('express');
 const router = express.Router();
 
-const todos = [ {
-    "id": '1', "task": "Buy Groceries"
-}]
+const todos = require("../data/todos");
+
+const error = require("../utilities/error");
 
 router.get("/todo", (req,res) => {
-    res.send("Todo list Accessed")
- 
+    // res.send("Todo list Accessed")
+    console.log("Todos:", todos);
+    // res.json(todos)
+    res.render("index", {todos})
+
 })
+
+
 
 module.exports = router
