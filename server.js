@@ -12,16 +12,28 @@ app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
 const indexRoutes = require('./routes/index');
+const users = require("./routes/users");
 const error = require("./utilities/error");
 
 
 app.use('/',indexRoutes)
+app.use('/users',users)
 
 
 app.get ("/",(req,res) => {
     res.send("Welcome to Node JS Project")
 })
 
+app.use((req, res, next) => {
+    next(error(404, "Resource Not Found"));
+  });
+  
+
+  app.use((err, req, res, next) => {
+    res.status(err.status || 500);
+    res.json({ error: err.message });
+  });
+
 app.listen(port,() => {
-    console.log("Server is running at port: " + port);
+    console.log(`Server listening on port: ${port}.`);
 })

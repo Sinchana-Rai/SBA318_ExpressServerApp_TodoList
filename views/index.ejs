@@ -12,13 +12,22 @@
         
             <h3><span> <%= index + 1 %>. </span> <%= el.task %>
                 <span>
-                    <button>Edit</button>
+                    <form action="/edit/<%= el.id %>">
+                        <button type="submit">Edit</button>
+                    </form>
                 </span>
+
                 <span>
-                    <button>Delete</button>
+                    <form action="/delete/<%= el.id %>">
+                        <button type="submit">Delete</button>
+                    </form>
                 </span>
+                    
             </h3>
+
         <%  })}  %>
+        <a href ="/new">Add new Task</a>
+    
 
         </body>
-</html
+</html>
