@@ -8,13 +8,19 @@ const error = require("../utilities/error");
 
 
 router.get("/users", (req, res) => {
-    console.log(`Task with user listing.`);
+    console.log(`User listing.`);
     
-    const { name, username, email } = req.query;
+    const { id, name, username, email } = req.query;
 
     let filteredUsers = Array.isArray(users) ? users : [];
 
     console.log(`inside users`);
+
+    if (id) {
+        filteredUsers = filteredUsers.filter((user) =>
+            user.id.toString() === id.toString()
+        );
+    }
 
     if (name) {
         filteredUsers = filteredUsers.filter((user) =>
@@ -70,6 +76,7 @@ router.get("/delete/:id", (req, res) => {
 })
 
 router.post("/edit/:id", (req, res) => {
+    const { id } = req.params;
     const params = req.params
     const body = req.body
     const index  = todos.findIndex(el => el.id == params.id)

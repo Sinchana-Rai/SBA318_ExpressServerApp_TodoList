@@ -12,12 +12,12 @@ app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
 const indexRoutes = require('./routes/index');
-const users = require("./routes/users");
+const activity = require("./routes/activity");
 const error = require("./utilities/error");
 
 
 app.use('/',indexRoutes)
-app.use('/users',users)
+app.use('/activity',activity)
 
 
 app.get ("/",(req,res) => {
